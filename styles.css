@@ -182,16 +182,39 @@ a:hover {
   }
 
   .search-container {
+    display: flex; /* Use flex layout for input and button */
     flex-direction: row; /* Align elements in one line */
+    width: 100%; /* Full width for the search container */
+    max-width: 500px; /* Limit maximum width for better readability */
   }
 
   input[type="text"] {
-    max-width: 70%; /* Adjust width as needed */
-    margin-right: 10px; /* Add spacing between input and button */
+    flex: 1; /* Let the input grow and take available space */
+    padding: 10px;
+    font-size: 16px;
+    color: #a16663;
+    border: 1px solid #dba8a5;
+    border-radius: 5px 0 0 5px;
   }
 
   button {
-    max-width: 30%; /* Adjust width as needed */
+    flex: 0; /* Keep the button's width fixed */
+    padding: 12px 20px; /* Adjust padding as needed */
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff8585, #ffebeb);
+    background-size: 200% 200%;
+    transition: background-position 0.3s, color 0.3s;
+  }
+
+  /* Hover effect for the button */
+  button:hover {
+    background-position: left center;
+    color: #fff;
+    animation: bubble 3s ease infinite;
   }
 
   /* Add more styles as needed for phones */

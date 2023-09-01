@@ -5,32 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dictionary App</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300&family=Mulish:wght@300&family=Poppins:wght@300&family=Roboto+Slab&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300&family=Mulish:wght@300&family=Poppins:wght@300&family=Roboto+Slab&family=Work+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
       <h1>Dictionary App</h1>
       <div class="search-container">
-     
-          <input
-            class="animated-input"
-            type="text"
-            id="searchInput"
-            placeholder="Enter a word to find its definition"
-            oninput="applyItalic(this)"
-          />
-          <span class="input-line"></span>
-         
-          <div class="container-button">
-            <button class="search-button" onclick="searchWord()">Search</button>
-          </div>
-        </div>
-        <div id="output" class="definition"></div>
-      </div>
-    </div>
+        <input
+          class="animated-input"
+          type="text"
+          id="searchInput"
+          placeholder="Enter a word to find its definition"
+          oninput="applyItalic(this)"
+        />
+        <span class="input-line"></span>
 
+        <div class="container-button">
+          <button class="search-button" onclick="searchWord()">Search</button>
+        </div>
+      </div>
+      <div id="output" class="definition" style="display: none"></div>
+    </div>
+    <p class="footer">
+      Codded by
+      <a href="https://github.com/SofiaDivine" title="My GitHub" target="_blank"
+        >Sofia Tanchuk
+      </a>
+    </p>
     <script>
       const apiKey = "e8c0bec9-9633-4d86-9514-a790dd513bd4";
 
@@ -48,9 +54,11 @@
 
         if (input === "") {
           output.innerHTML = ""; // Clear the output
+          output.style.display = "none";
+          output.classList.remove("visible"); // Hide the definition container
           return;
         }
-
+        output.classList.remove("visible");
         fetch(
           `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${input}?key=${apiKey}`
         )
@@ -63,15 +71,21 @@
               output.innerHTML = `<strong>${input}:</strong> ${data[0].shortdef.join(
                 ", "
               )}`;
+              output.style.display = "block";
+              output.classList.add("visible");
+              // Show the definition container
             }
           })
           .catch((error) => {
             console.error(error);
             output.innerHTML = "An error occurred while fetching data.";
+
+            // Use setTimeout to add the 'visible' class with a slight delay for the transition
+            setTimeout(() => {
+              output.classList.add("visible"); // Show the definition container with the error message
+            }, 10);
           });
       }
-
-   
     </script>
   </body>
 </html>

@@ -45,13 +45,23 @@ button {
   border-radius: 0 5px 5px 0;
   cursor: pointer;
 }
-
 .definition {
-  font-family: "Lora", serif;
-  margin-top: 20px;
+  display: none; /* Initially hide the container */
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #f39c12;
   border-radius: 5px;
+  margin-top: 10px;
+  background-color: #fff;
+  text-align: center;
+  opacity: 0; /* Initially set opacity to 0 */
+  transition: opacity 0.3s ease; /* Add a smooth opacity transition with ease easing function */
+}
+
+/* Show the container when it's visible */
+.definition.visible {
+  font-family: "Lora", sans-serif;
+  display: block;
+  opacity: 1; /* Set opacity to 1 for full visibility */
 }
 
 @media (max-width: 768px) {
@@ -129,4 +139,10 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.footer {
+  display: block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 12px;
 }

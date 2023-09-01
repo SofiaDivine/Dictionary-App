@@ -167,23 +167,31 @@ a:hover {
 
   /* Reset margin and padding for container */
   .container {
-    margin: 0;
+    margin: 0 auto; /* Center the container horizontally */
     padding: 10px; /* Adjust as needed */
+    max-width: 100%; /* Full width for the container on phones */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align content vertically */
+    justify-content: center; /* Center align content horizontally */
+    height: 100vh; /* Set container height to full viewport height */
   }
 
-  /* Adjust other styles for phones as needed */
   h1 {
-    margin-left: 10px; /* Adjust as needed */
+    margin: 0; /* Remove margin */
   }
 
   .search-container {
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center align elements */
+    flex-direction: row; /* Align elements in one line */
   }
 
   input[type="text"] {
-    max-width: 100%; /* Full width for input on phones */
-    margin-bottom: 10px; /* Adjust as needed */
+    max-width: 70%; /* Adjust width as needed */
+    margin-right: 10px; /* Add spacing between input and button */
+  }
+
+  button {
+    max-width: 30%; /* Adjust width as needed */
   }
 
   /* Add more styles as needed for phones */

@@ -1,22 +1,24 @@
 body {
-  background-color: #f5f5f5;
+  background-color: #f7b9b931;
   margin: 0;
   padding: 0;
 }
 
 .container {
+  display: block;
+  margin-top: 80px;
   max-width: 500px;
-  margin: 0 auto;
+  margin-left: 378px;
   padding: 20px;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(255, 83, 83, 0.4);
 }
 
 h1 {
   font-family: "Montserrat", sans-serif;
   text-align: center;
-  color: #333;
+  color: #ffaaa5;
 }
 
 .search-container {
@@ -25,13 +27,17 @@ h1 {
   align-items: center;
   margin-top: 20px;
 }
-
+::placeholder {
+  color: #a16663;
+  opacity: 0.87;
+}
 input[type="text"] {
   font-family: "Montserrat Regular", sans-serif;
   flex-grow: 1;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  color: #a16663;
+  border: 1px solid #dba8a5;
   border-radius: 5px 0 0 5px;
 }
 
@@ -39,7 +45,6 @@ button {
   font-family: "Montserrat Regular", sans-serif;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 0 5px 5px 0;
@@ -48,7 +53,7 @@ button {
 .definition {
   display: none; /* Initially hide the container */
   padding: 10px;
-  border: 2px solid #f39c12;
+  border: 2px solid #ffaaa5;
   border-radius: 5px;
   margin-top: 10px;
   background-color: #fff;
@@ -59,6 +64,7 @@ button {
 
 /* Show the container when it's visible */
 .definition.visible {
+  color: #a16663;
   font-family: "Lora", sans-serif;
   display: block;
   opacity: 1; /* Set opacity to 1 for full visibility */
@@ -74,10 +80,10 @@ button {
   width: 100%;
   padding: 10px;
   border: none;
-  border-bottom: 2px solid #f39c12; /* Initial line color */
+  border-bottom: 2px solid #d9a6a3; /* Initial line color */
   outline: none;
   background-color: transparent;
-  color: #333;
+  color: #d9a6a3;
   transition: border-color 0.3s; /* Transition for line color */
   position: relative; /* Add position relative */
 }
@@ -89,13 +95,13 @@ button {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #ff6b6b; /* Initial line color */
+  background-color: #ffaaa5; /* Initial line color */
   transition: width 0.3s; /* Transition for line width */
 }
 
 /* Line animation on input focus */
 .animated-input:focus {
-  border-color: #ff6b6b; /* Line color on focus */
+  border-color: #ffaaa5; /* Line color on focus */
 }
 
 /* Line animation on input focus */
@@ -110,14 +116,14 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background: linear-gradient(45deg, #ff6b6b, #f39c12);
+  background: linear-gradient(45deg, #ff8585, #ffebeb);
   background-size: 200% 200%;
   transition: background-position 0.3s, color 0.3s;
 }
 
 /* Hover effect for the button */
 .search-button:hover {
-  background-position: right center;
+  background-position: left center;
   color: #fff;
   animation: bubble 3s ease infinite;
 }
@@ -141,8 +147,18 @@ button {
   align-items: center;
 }
 .footer {
+  color: #d9a6a3;
   display: block;
   font-weight: 100;
   text-align: center;
   font-size: 12px;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #d9a6a3;
+}
+a:hover {
+  text-decoration: underline;
+  color: #ffaaa5;
 }

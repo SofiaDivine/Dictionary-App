@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dictionary App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dictionary App</h1>
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Enter a word to find its definition"
+        />
+        <button onclick="searchWord()">Search</button>
+      </div>
+      <div class="result-container">
+        <div id="output" class="definition"></div>
+        <div id="imageContainer" class="image">
+          <img id="wordImage" src="" alt="Word Image" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const apiKey = "e8c0bec9-9633-4d86-9514-a790dd513bd4";
+
+      // Function to handle Enter key press in the input field
+      function handleKeyUp(event) {
+        if (event.keyCode === 13) {
+          searchWord();
+        }
+      }
+
+      async function searchWord() {
+        const input = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const output = document.getElementById("output");
+
+        if (input === "") {
+          output.innerHTML = "Please enter a word.";
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${input}?key=${apiKey}`
+          );
+          const data = await response.json();
+
+          if (data.length === 0) {
+            output.innerHTML = `No definitions found for "${input}".`;
+          } else {
+            // Display the first definition found
+            output.innerHTML = `<strong>${input}:</strong> ${data[0].shortdef.join(
+              ", "
+            )}`;
+          }
+        } catch (error) {
+          console.error(error);
+          output.innerHTML = "An error occurred while fetching data.";
+        }
+      }
+    </script>
+  </body>
+</html>

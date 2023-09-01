@@ -5,66 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dictionary App</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300&family=Mulish:wght@300&family=Poppins:wght@300&family=Roboto+Slab&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="container">
       <h1>Dictionary App</h1>
       <div class="search-container">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Enter a word to find its definition"
-        />
-        <button onclick="searchWord()">Search</button>
-      </div>
-      <div class="result-container">
-        <div id="output" class="definition"></div>
-        <div id="imageContainer" class="image">
-          <img id="wordImage" src="" alt="Word Image" />
+     
+          <input
+            class="animated-input"
+            type="text"
+            id="searchInput"
+            placeholder="Enter a word to find its definition"
+            oninput="applyItalic(this)"
+          />
+          <span class="input-line"></span>
+         
+          <div class="container-button">
+            <button class="search-button" onclick="searchWord()">Search</button>
+          </div>
         </div>
+        <div id="output" class="definition"></div>
       </div>
     </div>
 
     <script>
       const apiKey = "e8c0bec9-9633-4d86-9514-a790dd513bd4";
 
-      // Function to handle Enter key press in the input field
-      function handleKeyUp(event) {
-        if (event.keyCode === 13) {
+      const searchInput = document.getElementById("searchInput");
+      const output = document.getElementById("output");
+
+      searchInput.addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
           searchWord();
         }
-      }
+      });
 
-      async function searchWord() {
-        const input = document
-          .getElementById("searchInput")
-          .value.toLowerCase();
-        const output = document.getElementById("output");
+      function searchWord() {
+        const input = searchInput.value.toLowerCase();
 
         if (input === "") {
-          output.innerHTML = "Please enter a word.";
+          output.innerHTML = ""; // Clear the output
           return;
         }
 
-        try {
-          const response = await fetch(
-            `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${input}?key=${apiKey}`
-          );
-          const data = await response.json();
-
-          if (data.length === 0) {
-            output.innerHTML = `No definitions found for "${input}".`;
-          } else {
-            // Display the first definition found
-            output.innerHTML = `<strong>${input}:</strong> ${data[0].shortdef.join(
-              ", "
-            )}`;
-          }
-        } catch (error) {
-          console.error(error);
-          output.innerHTML = "An error occurred while fetching data.";
-        }
+        fetch(
+          `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${input}?key=${apiKey}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.length === 0) {
+              output.innerHTML = `No definitions found for "${input}".`;
+            } else {
+              // Display the first definition found
+              output.innerHTML = `<strong>${input}:</strong> ${data[0].shortdef.join(
+                ", "
+              )}`;
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            output.innerHTML = "An error occurred while fetching data.";
+          });
       }
+
+   
     </script>
   </body>
 </html>

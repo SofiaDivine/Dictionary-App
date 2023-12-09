@@ -53,9 +53,9 @@
         const input = searchInput.value.toLowerCase();
 
         if (input === "") {
-          output.innerHTML = ""; // Clear the output
+          output.innerHTML = "";
           output.style.display = "none";
-          output.classList.remove("visible"); // Hide the definition container
+          output.classList.remove("visible");
           return;
         }
         output.classList.remove("visible");
@@ -67,22 +67,19 @@
             if (data.length === 0) {
               output.innerHTML = `No definitions found for "${input}".`;
             } else {
-              // Display the first definition found
               output.innerHTML = `<strong>${input}:</strong> ${data[0].shortdef.join(
                 ", "
               )}`;
               output.style.display = "block";
               output.classList.add("visible");
-              // Show the definition container
             }
           })
           .catch((error) => {
             console.error(error);
             output.innerHTML = "An error occurred while fetching data.";
 
-            // Use setTimeout to add the 'visible' class with a slight delay for the transition
             setTimeout(() => {
-              output.classList.add("visible"); // Show the definition container with the error message
+              output.classList.add("visible");
             }, 10);
           });
       }

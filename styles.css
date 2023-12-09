@@ -51,23 +51,22 @@ button {
   cursor: pointer;
 }
 .definition {
-  display: none; /* Initially hide the container */
+  display: none;
   padding: 10px;
   border: 2px solid #ffaaa5;
   border-radius: 5px;
   margin-top: 10px;
   background-color: #fff;
   text-align: center;
-  opacity: 0; /* Initially set opacity to 0 */
-  transition: opacity 0.3s ease; /* Add a smooth opacity transition with ease easing function */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Show the container when it's visible */
 .definition.visible {
   color: #a16663;
   font-family: "Lora", sans-serif;
   display: block;
-  opacity: 1; /* Set opacity to 1 for full visibility */
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -80,31 +79,28 @@ button {
   width: 100%;
   padding: 10px;
   border: none;
-  border-bottom: 2px solid #d9a6a3; /* Initial line color */
+  border-bottom: 2px solid #d9a6a3;
   outline: none;
   background-color: transparent;
   color: #d9a6a3;
-  transition: border-color 0.3s; /* Transition for line color */
-  position: relative; /* Add position relative */
+  transition: border-color 0.3s;
+  position: relative;
 }
 
-/* Line styles */
 .input-line {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #ffaaa5; /* Initial line color */
-  transition: width 0.3s; /* Transition for line width */
+  background-color: #ffaaa5;
+  transition: width 0.3s;
 }
 
-/* Line animation on input focus */
 .animated-input:focus {
-  border-color: #ffaaa5; /* Line color on focus */
+  border-color: #ffaaa5;
 }
 
-/* Line animation on input focus */
 .animated-input:focus + .input-line {
   width: 100%;
 }
@@ -121,14 +117,12 @@ button {
   transition: background-position 0.3s, color 0.3s;
 }
 
-/* Hover effect for the button */
 .search-button:hover {
   background-position: left center;
   color: #fff;
   animation: bubble 3s ease infinite;
 }
 
-/* Create flying line pseudo-element */
 @keyframes bubble {
   0% {
     transform: scale(1);
@@ -163,33 +157,30 @@ a:hover {
   color: #ffaaa5;
 }
 @media (max-width: 768px) {
-  /* Styles for phones */
-
-  /* Reset margin and padding for container */
   .container {
-    margin: 0 auto; /* Center the container horizontally */
-    padding: 10px; /* Adjust as needed */
-    max-width: 100%; /* Full width for the container on phones */
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align content vertically */
-    justify-content: center; /* Center align content horizontally */
-    height: 100vh; /* Set container height to full viewport height */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
   }
 
   h1 {
-    margin: 0; /* Remove margin */
+    margin: 0;
   }
 
   .search-container {
-    display: flex; /* Use flex layout for input and button */
-    flex-direction: row; /* Align elements in one line */
-    width: 100%; /* Full width for the search container */
-    max-width: 500px; /* Limit maximum width for better readability */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 500px;
   }
 
   input[type="text"] {
-    flex: 1; /* Let the input grow and take available space */
+    flex: 1;
     padding: 10px;
     font-size: 16px;
     color: #a16663;
@@ -198,8 +189,8 @@ a:hover {
   }
 
   button {
-    flex: 0; /* Keep the button's width fixed */
-    padding: 12px 20px; /* Adjust padding as needed */
+    flex: 0;
+    padding: 12px 20px;
     font-size: 16px;
     color: #fff;
     border: none;
@@ -210,12 +201,9 @@ a:hover {
     transition: background-position 0.3s, color 0.3s;
   }
 
-  /* Hover effect for the button */
   button:hover {
     background-position: left center;
     color: #fff;
     animation: bubble 3s ease infinite;
   }
-
-  /* Add more styles as needed for phones */
 }
